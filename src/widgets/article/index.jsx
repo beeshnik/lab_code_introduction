@@ -1,10 +1,9 @@
 import React from 'react';
 
-export default function Chapter(props) {
+export default function Article(props) {
     return (
         <div>
             {props.title}
-            <br/>
         </div>
     )
 }
