@@ -1,0 +1,35 @@
+
+div.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 200px 0 200px;
+    gap: 16px;
+}
+
+div.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+div.label {
+
+}
+
+div.navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+div.sections {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}

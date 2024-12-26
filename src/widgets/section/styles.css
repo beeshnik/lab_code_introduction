@@ -1,0 +1,21 @@
+div.section-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5px;
+}
+
+div.chapters {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+div.section-name {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    gap: 5px;
+}
