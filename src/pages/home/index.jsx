@@ -2,6 +2,7 @@ import React from "react"
 import {useGetChapters} from "../../shared/hooks";
 import Section from "../../widgets/section";
 import Chapter from "../../widgets/chapter";
+import {Link} from "react-router-dom";
 import "./styles.css"
 
 export default function HomePage(){
@@ -15,8 +16,12 @@ export default function HomePage(){
                     <h2>Онлайн справка</h2>
                 </div>
                 <div className="navigation">
-                    <button>Создать главу</button>
-                    <button>Создать раздел</button>
+                    <Link to={`/add-section`}>
+                        <button>Создать раздел</button>
+                    </Link>
+                    <Link to={`/add-chapter`}>
+                        <button>Создать главу</button>
+                    </Link>
                     <button>Редактировать</button>
                 </div>
             </div>

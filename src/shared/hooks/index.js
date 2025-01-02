@@ -1,7 +1,7 @@
 
-import {useQuery} from "@tanstack/react-query";
-// import { getChapters, getArticles } from "../api"
-import {getArticles, getChapters} from "../api/test";
+import {useMutation, useQuery} from "@tanstack/react-query";
+import { getChapters, getArticles } from "../api"
+// import {getArticles, getChapters} from "../api/test";
 import {useEffect} from "react";
 
 
@@ -9,7 +9,7 @@ export function useGetChapters() {
     const query = useQuery({
         queryKey: ["chapters"],
         queryFn: getChapters,
-        // select: data => data.data,
+        select: data => data.data,
     })
 
     useEffect(() => {
@@ -25,9 +25,9 @@ export function useGetChapters() {
 
 export function useGetArticles(chapterId) {
     const query = useQuery({
-        queryKey: ["articles"],
-        queryFn: (chapterId) => getArticles(chapterId),
-        // select: data => data.data,
+        queryKey: ["articles", chapterId],
+        queryFn: () => getArticles(chapterId),
+        select: data => data.data,
     })
 
     useEffect(() => {
@@ -39,4 +39,42 @@ export function useGetArticles(chapterId) {
     }, [query.error, query.isError])
 
     return query;
+}
+
+export function useCreateChapter(sectionId, chapter) {
+    const mutation = useMutation({
+
+    })
+
+    return mutation
+}
+
+export function useUpdateChapter(chapterId, chapter) {
+    const mutation = useMutation({
+
+    })
+}
+
+export function useDeleteChapter(chapterId) {
+
+}
+
+export function useCreateSection(section) {
+    const mutation = useMutation({
+
+    })
+    return mutation
+}
+
+export function useUpdateSection(sectionId, section) {
+    const mutation = useMutation({
+
+    })
+    return mutation
+}
+
+export function useDeleteSection(sectionId) {
+    const mutation = useMutation({
+
+    })
 }
