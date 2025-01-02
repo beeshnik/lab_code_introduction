@@ -1,6 +1,15 @@
 
 import {useMutation, useQuery} from "@tanstack/react-query";
-import { getChapters, getArticles } from "../api"
+import {
+    getChapters,
+    getArticles,
+    postChapter,
+    postSection,
+    putSection,
+    deleteSection,
+    deleteChapter,
+    putChapter, getArticle, postArticle
+} from "../api"
 // import {getArticles, getChapters} from "../api/test";
 import {useEffect} from "react";
 
@@ -41,40 +50,76 @@ export function useGetArticles(chapterId) {
     return query;
 }
 
-export function useCreateChapter(sectionId, chapter) {
-    const mutation = useMutation({
-
+export function useGetArticle(articleId) {
+    const query = useQuery({
+        queryKey: ["article", articleId],
+        queryFn: () => getArticle(articleId),
+        select: data => data.data,
     })
 
-    return mutation
+    useEffect(() => {
+        console.log("Данные обновлены")
+    }, [query.isSuccess, query.data]);
+
+    useEffect(() => {
+        if (query.isError) console.error(query.error)
+    }, [query.error, query.isError])
+
+    return query;
 }
 
-export function useUpdateChapter(chapterId, chapter) {
+export function useCreateSection() {
     const mutation = useMutation({
-
+        mutationKey: ["post section"],
+        mutationFn: async (section) => postSection(section),
     })
+    return mutation.mutate
 }
 
-export function useDeleteChapter(chapterId) {
-
-}
-
-export function useCreateSection(section) {
+export function useUpdateSection() {
     const mutation = useMutation({
-
+        mutationKey: ["put section"],
+        mutationFn: async (sectionId, section) => putSection(sectionId, section),
     })
-    return mutation
+    return mutation.mutate
 }
 
-export function useUpdateSection(sectionId, section) {
+export function useDeleteSection() {
     const mutation = useMutation({
-
+        mutationKey: ["delete section"],
+        mutationFn: async (sectionId) => deleteSection(sectionId),
     })
-    return mutation
+    return mutation.mutate
 }
 
-export function useDeleteSection(sectionId) {
+export function useCreateChapter() {
     const mutation = useMutation({
-
+        mutationKey: ["post chapter"],
+        mutationFn: async (chapterId, chapterData) => postChapter(chapterId, chapterData),
     })
+    return mutation.mutate
+}
+
+export function useUpdateChapter() {
+    const mutation = useMutation({
+        mutationKey: ["put chapter"],
+        mutationFn: async (chapterId, chapterData) => putChapter(chapterId, chapterData),
+    })
+    return mutation.mutate
+}
+
+export function useDeleteChapter() {
+    const mutation = useMutation({
+        mutationKey: ["delete chapter"],
+        mutationFn: async (chapterId) => deleteChapter(chapterId),
+    })
+    return mutation.mutate
+}
+
+export function useCreateArticle() {
+    const mutation = useMutation({
+        mutationKey: ["post article"],
+        mutationFn: async (chapterId, article) => postArticle(chapterId, article),
+    })
+    return mutation.mutate
 }
