@@ -1,13 +1,17 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import "./styles.css"
 
 export default function AddSectionPage(props) {
     return (
         <div>
-            Добавить раздел
             <Link to={'/'}>
-                <button>Назад</button>
+                Онлайн справки
             </Link>
+            <h1>Новый раздел</h1>
+            <div className="add-section">
+
+            </div>
         </div>
     )
 }
