@@ -15,7 +15,7 @@ export default function Section(props) {
             <div className="section-container">
                 <div className="section-name">
                     <div className="section-icon">
-                        <Icon name={props.icon}/>
+                        <Icon name={props.icon} mode={"get"}/>
                     </div>
                     <div className="section-title">
                         {props.title}
