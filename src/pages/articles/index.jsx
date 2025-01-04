@@ -10,18 +10,17 @@ export default function ArticlesPage(props) {
 
     return (
         <div>
-            {`Справки для ${params.chapterId}`}
-            {articles.isLoading ? "Загрузка..."
-                :
-                articles.isError ? "Ошибка!" : articles?.data?.articles.map((article, index) => (
-                    <Article title={article.title} key={index} id={article.id} />
-                ))}
             <Link to={'/'}>
                 <button>Назад</button>
             </Link>
             <Link to={`/${params.chapterId}/add-article`}>
                 <button>Создать справку</button>
             </Link>
+            {articles.isLoading ? "Загрузка..."
+                :
+                articles.isError ? "Ошибка!" : articles?.data?.articles.map((article, index) => (
+                    <Article title={article.title} key={index} id={article.id} />
+                ))}
         </div>
     )
 }

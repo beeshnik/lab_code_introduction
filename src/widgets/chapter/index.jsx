@@ -16,7 +16,7 @@ export default function Chapter(props) {
             <div className="chapter">
                 <div className="chapter-name">
                     <div className="chapter-icon">
-                        <Icon name={props.icon}/>
+                        <Icon name={props.icon} mode={"get"}/>
                     </div>
                     <div className="chapter-title">
                         {props.title}
