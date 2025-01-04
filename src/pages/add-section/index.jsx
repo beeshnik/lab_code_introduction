@@ -2,21 +2,17 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import "./styles.css"
 import NameInput from "../../shared/ui/nameInput";
-import {TextField} from "@mui/material";
 import IconSelect from "../../widgets/iconSelect";
 import {FormProvider, useForm} from "react-hook-form";
-import {defaultIcon} from "../../shared/ui/icon";
 import DraftStatus from "../../widgets/draftStatus";
 
 export default function AddSectionPage(props) {
 
     const methods = useForm({
         defaultValues: {
-            "icon": defaultIcon,
             "isEnabled": false,
         }
     })
-    const { register } = methods
 
     const onSubmit = (form) => {
         console.log(form)
@@ -32,7 +28,8 @@ export default function AddSectionPage(props) {
                 <FormProvider {...methods}>
                     <form onSubmit={methods.handleSubmit(onSubmit)}>
                         <div>
-                            <NameInput name={"title"} />
+                            
+                            <NameInput name={"title"}  label={"Название раздела"}/>
                             <IconSelect name={"icon"}/>
                             <DraftStatus name={"isEnabled"}
                                          label={"Показывать пользователям"}

@@ -71,7 +71,7 @@ export function useGetArticle(articleId) {
 export function useCreateSection() {
     const mutation = useMutation({
         mutationKey: ["post section"],
-        mutationFn: async (section) => postSection(section),
+        mutationFn: async (data) => postSection(data),
     })
     return mutation.mutate
 }
@@ -79,7 +79,7 @@ export function useCreateSection() {
 export function useUpdateSection() {
     const mutation = useMutation({
         mutationKey: ["put section"],
-        mutationFn: async (sectionId, section) => putSection(sectionId, section),
+        mutationFn: async (data) => putSection(data),
     })
     return mutation.mutate
 }
@@ -87,7 +87,7 @@ export function useUpdateSection() {
 export function useDeleteSection() {
     const mutation = useMutation({
         mutationKey: ["delete section"],
-        mutationFn: async (sectionId) => deleteSection(sectionId),
+        mutationFn: async (data) => deleteSection(data),
     })
     return mutation.mutate
 }
@@ -95,7 +95,7 @@ export function useDeleteSection() {
 export function useCreateChapter() {
     const mutation = useMutation({
         mutationKey: ["post chapter"],
-        mutationFn: async (chapterId, chapterData) => postChapter(chapterId, chapterData),
+        mutationFn: async (data) => postChapter(data),
     })
     return mutation.mutate
 }
@@ -103,7 +103,7 @@ export function useCreateChapter() {
 export function useUpdateChapter() {
     const mutation = useMutation({
         mutationKey: ["put chapter"],
-        mutationFn: async (chapterId, chapterData) => putChapter(chapterId, chapterData),
+        mutationFn: async (data) => putChapter(data),
     })
     return mutation.mutate
 }
@@ -111,7 +111,7 @@ export function useUpdateChapter() {
 export function useDeleteChapter() {
     const mutation = useMutation({
         mutationKey: ["delete chapter"],
-        mutationFn: async (chapterId) => deleteChapter(chapterId),
+        mutationFn: async (data) => deleteChapter(data),
     })
     return mutation.mutate
 }
@@ -119,7 +119,7 @@ export function useDeleteChapter() {
 export function useCreateArticle() {
     const mutation = useMutation({
         mutationKey: ["post article"],
-        mutationFn: async (chapterId, article) => postArticle(chapterId, article),
+        mutationFn: async (data) => postArticle(data),
     })
     return mutation.mutate
 }

@@ -3,52 +3,54 @@ import axios from "axios";
 const url = "http://localhost:80"
 // const url = "http://lab-code.com:62533"
 
+const api = axios.create({
+    baseURL: url,
+    headers: {
+        "Content-Type": "application/json",
+    }
+})
+
 export function getChapters() {
-    const link = `${url}/wiki-service-admin/api/v1/sections/chapters`
-    return axios.get(link)
+    return api.get("/wiki-service-admin/api/v1/sections/chapters")
 }
 
 export function getArticles(chapterId){
-    const link = `${url}/wiki-service-admin/api/v1/sections/chapters/${chapterId}/articles`
-    return axios.get(link)
+    return api.get(`/wiki-service-admin/api/v1/sections/chapters/${chapterId}/articles`)
 }
 
 export function getArticle(articleId){
-    const link = `${url}/wiki-service-admin/api/v1/sections/chapters/articles/${articleId}`
-    return axios.get(link)
+    return api.get(`/wiki-service-admin/api/v1/sections/chapters/articles/${articleId}`)
 }
 
-export async function postSection(section){
-    const link = `${url}/wiki-service-admin/api/v1/sections/section`
-    return await axios.post(link, JSON.stringify(section))
+export async function postSection(data){
+    return api.post(`/wiki-service-admin/api/v1/sections/section`,
+        JSON.stringify(data.section))
 }
 
-export async function postChapter(sectionId, chapter){
-    const link = `${url}/wiki-service-admin/api/v1/sections/${sectionId}/chapters/chapter`
-    return await axios.post(link, JSON.stringify(chapter))
+export async function postChapter(data){
+    return api.post(`/wiki-service-admin/api/v1/sections/${data.sectionId}/chapters/chapter`,
+        JSON.stringify(data.chapter))
 }
 
-export async function postArticle(chapterId, article){
-    const link = `${url}/wiki-service-admin/api/v1/sections/chapters/${chapterId}/articles/article`
-    return await axios.post(link, JSON.stringify(article))
+export async function postArticle(data){
+    return api.post(`/wiki-service-admin/api/v1/sections/chapters/${data.chapterId}/articles/article`,
+        JSON.stringify(data.article))
 }
 
-export async function putSection(sectionId, section){
-    const link = `${url}/wiki-service-admin/api/v1/sections/${sectionId}`
-    return await axios.put(link, JSON.stringify(section))
+export async function putSection(data){
+    return api.put(`/wiki-service-admin/api/v1/sections/${data.sectionId}`,
+        JSON.stringify(data.section))
 }
 
-export async function putChapter(chapterId, chapter){
-    const link = `${url}/wiki-service-admin/api/v1/sections/chapters/${chapterId}`
-    return await axios.put(link, JSON.stringify(chapter))
+export async function putChapter(data){
+    return api.put(`/wiki-service-admin/api/v1/sections/chapters/${data.chapterId}`,
+        JSON.stringify(data.chapter))
 }
 
-export async function deleteSection(sectionId){
-    const link = `${url}/wiki-service-admin/api/v1/sections/${sectionId}/delete`
-    return await axios.delete(link)
+export async function deleteSection(data){
+    return await api.delete(`/wiki-service-admin/api/v1/sections/${data.sectionId}/delete`)
 }
 
-export async function deleteChapter(chapterId){
-    const link = `${url}/wiki-service-admin/api/v1/sections/chapters/${chapterId}/delete`
-    return await axios.delete(link)
+export async function deleteChapter(data){
+    return await api.delete(`/wiki-service-admin/api/v1/sections/chapters/${data.chapterId}/delete`)
 }

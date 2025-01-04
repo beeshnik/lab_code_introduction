@@ -10,10 +10,10 @@ const menuProps = {
     MenuListProps: {
         style: {
             display: 'grid',
-            gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', // 5 колонок
+            gridTemplateColumns: 'repeat(8, minmax(0, 1fr))', // 5 колонок
             columnGap: '8px', // Отступ между колонками
             padding: '8px', // Добавляем padding
-            maxHeight: '400px',
+            maxHeight: '500px',
             overflowY: 'auto'
         },
     },

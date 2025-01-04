@@ -16,11 +16,12 @@ const NameInput =
                 }}
                 render={({ field: { value, onChange } }) => (
                     <TextField fullWidth
-                               label="Название раздела"
+                               label={props.label}
                                variant="outlined"
                                name={"title"}
                                value={value || ""}
                                onChange={onChange}
+                               ref={ref}
                     />
                 )}
             />
