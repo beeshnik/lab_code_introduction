@@ -29,18 +29,21 @@ const IconSelect =
             <Controller
                 name={props.name}
                 control={control}
-                // rules={{
-                //     required: true
-                // }}
-                render={({ field: { value, onChange } }) => (
+                rules={{
+                    required: "Выберите иконку"
+                }}
+                render={({ field: { value, onChange },
+                         fieldState: { error }}) => (
 
                     <FormControl sx={{ m: 1, minWidth: 120 }}>
                         <Select
                             variant={"outlined"}
                             MenuProps={menuProps}
                             ref={ref}
-                            value={value || defaultIcon}
+                            value={value || ""}
                             onChange={onChange}
+                            error={!!error}
+                            helperText={error ? error.message : ""}
                         >
                             {iconList.map((icon, index) => (
                                 <MenuItem key={index} value={icon}>

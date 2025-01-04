@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const url = "http://localhost:80"
-// const url = "http://lab-code.com:62533"
+// const url = "http://localhost:80"
+const url = "http://lab-code.com:62533"
 
 const api = axios.create({
     baseURL: url,

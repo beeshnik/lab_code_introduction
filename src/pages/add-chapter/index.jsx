@@ -18,17 +18,13 @@ export default function AddChapterPage(props) {
     const addChapter = useCreateChapter();
 
     const onSubmit = (form) => {
-        const newForm = {
-            displayOrder: "2",
-            title: form.title,
-            icon: form.icon,
-            isEnabled: `${form.isEnabled}`,
-        }
-        addChapter({
+        addChapter.mutate({
             sectionId: form.sectionId,
-            chapter: newForm,
+            chapter: {
+                ...form,
+                displayOrder: "2",
+            }
         });
-        console.log(newForm)
     }
 
     return (
@@ -40,13 +36,17 @@ export default function AddChapterPage(props) {
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
                     <div>
-                        <SectionList name={"sectionId"} label={"Название раздела"}/>
-                        <NameInput name={"title"} label={"Название главы"}/>
+                        <SectionList name={"sectionId"}
+                                     label={"Название раздела"}
+                        />
+                        <NameInput name={"title"}
+                                   label={"Название главы"}
+                        />
                         <IconSelect name={"icon"}/>
                         <DraftStatus name={"isEnabled"}
                                      label={"Показывать пользователям"}
                         />
-                        <button type="submit">Отправить данные</button>
+                        <button type="submit">Создать</button>
                     </div>
                 </form>
             </FormProvider>

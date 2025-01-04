@@ -12,9 +12,11 @@ const NameInput =
                 name={props.name}
                 control={control}
                 rules={{
-                    required: true
+                    required: "Поле обязательно к заполнению",
+
                 }}
-                render={({ field: { value, onChange } }) => (
+                render={({ field: { value, onChange},
+                         fieldState: { error}}) => (
                     <TextField fullWidth
                                label={props.label}
                                variant="outlined"
@@ -22,6 +24,8 @@ const NameInput =
                                value={value || ""}
                                onChange={onChange}
                                ref={ref}
+                               helperText={error ? error.message : ""}
+                               error={!!error}
                     />
                 )}
             />

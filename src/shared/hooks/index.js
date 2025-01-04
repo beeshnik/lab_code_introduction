@@ -73,7 +73,7 @@ export function useCreateSection() {
         mutationKey: ["post section"],
         mutationFn: async (data) => postSection(data),
     })
-    return mutation.mutate
+    return mutation
 }
 
 export function useUpdateSection() {
@@ -97,7 +97,7 @@ export function useCreateChapter() {
         mutationKey: ["post chapter"],
         mutationFn: async (data) => postChapter(data),
     })
-    return mutation.mutate
+    return mutation
 }
 
 export function useUpdateChapter() {

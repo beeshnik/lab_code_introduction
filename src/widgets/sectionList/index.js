@@ -18,15 +18,18 @@ const SectionList =
                 name={props.name}
                 control={control}
                 rules={{
-                    required: true
+                    required: "Необходимо выбрать раздел"
                 }}
-                render={({ field: { value, onChange } }) => (
+                render={({ field: { value, onChange },
+                         fieldState: { error }}) => (
                     <Select
                         label={props.label}
                         name={props.name}
                         ref={ref}
                         value={value || ""}
                         onChange={onChange}
+                        error={!!error}
+                        helperText={error ? error.message : ""}
                     >
                         {sections.data.sections.map((section, index) => (
                             <MenuItem value={section.id} key={index}>{section.title}</MenuItem>
