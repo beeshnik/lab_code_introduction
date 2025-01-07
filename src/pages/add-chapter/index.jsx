@@ -1,5 +1,5 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React, {useEffect} from 'react';
+import {Link, useNavigate} from "react-router-dom";
 import NameInput from "../../shared/ui/nameInput";
 import IconSelect from "../../widgets/iconSelect";
 import DraftStatus from "../../widgets/draftStatus";
@@ -16,6 +16,23 @@ export default function AddChapterPage(props) {
     })
 
     const addChapter = useCreateChapter();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const error = addChapter.isError
+        if (error) {
+            methods.setError("title")
+            methods.setError("icon")
+            methods.setError("sectionId")
+            alert("Не удалось создать раздел")
+        }
+    }, [addChapter.isError]);
+
+    useEffect(() => {
+        if (addChapter.isSuccess) {
+            navigate("/")
+        }
+    }, [addChapter.isSuccess]);
 
     const onSubmit = (form) => {
         addChapter.mutate({
@@ -25,6 +42,7 @@ export default function AddChapterPage(props) {
                 displayOrder: "2",
             }
         });
+
     }
 
     return (

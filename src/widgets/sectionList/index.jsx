@@ -1,17 +1,21 @@
 
 import {Controller, useFormContext} from "react-hook-form";
-import {TextField} from "@mui/material";
-import {forwardRef} from "react";
+import {forwardRef, useEffect, useState} from "react";
 import Select from "@mui/material/Select";
 import {useGetChapters} from "../../shared/hooks";
 import MenuItem from "@mui/material/MenuItem";
 
 const SectionList =
     forwardRef(function SectionList(props, ref) {
+        const [sectionList, setSectionList] = useState([""]);
 
         const { control } = useFormContext()
 
         const sections = useGetChapters()
+
+        useEffect(() => {
+            setSectionList(sections?.data?.sections)
+        }, [sections?.data?.sections])
 
         return (
             <Controller
@@ -31,7 +35,7 @@ const SectionList =
                         error={!!error}
                         helperText={error ? error.message : ""}
                     >
-                        {sections.data.sections.map((section, index) => (
+                        {sectionList?.map((section, index) => (
                             <MenuItem value={section.id} key={index}>{section.title}</MenuItem>
                         ))}
                     </Select>

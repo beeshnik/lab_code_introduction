@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@measured/puck": "^0.17.1",
     "@mui/material": "^6.3.0",
     "@mui/styled-engine-sc": "^6.3.0",
     "@tanstack/react-query": "^5.62.10",
@@ -14,8 +15,8 @@
     "date-fns": "^4.1.0",
     "effector": "^23.2.3",
     "lucide-react": "^0.469.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "18.2",
+    "react-dom": "18.2",
     "react-hook-form": "^7.54.2",
     "react-router": "^7.1.1",
     "react-router-dom": "^7.1.1",
