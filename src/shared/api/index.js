@@ -33,6 +33,7 @@ export async function postChapter(data){
 }
 
 export async function postArticle(data){
+    console.log(JSON.stringify(data.article))
     return api.post(`/wiki-service-admin/api/v1/sections/chapters/${data.chapterId}/articles/article`,
         JSON.stringify(data.article))
 }

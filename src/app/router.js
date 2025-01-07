@@ -5,6 +5,7 @@ import AddArticlePage from "../pages/add-article";
 import AddSectionPage from "../pages/add-section";
 import ArticlesPage from "../pages/articles";
 import {Link} from "react-router-dom";
+import ArticleValue from "../widgets/articleValue";
 
 export const router = createBrowserRouter([
     {

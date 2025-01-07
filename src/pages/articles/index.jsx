@@ -2,6 +2,7 @@ import React from 'react';
 import {useGetArticles} from "../../shared/hooks";
 import {Link, useParams} from "react-router-dom";
 import Article from "../../widgets/article";
+import ArticleValue from "../../widgets/articleValue";
 
 export default function ArticlesPage(props) {
     const params = useParams();
@@ -16,11 +17,16 @@ export default function ArticlesPage(props) {
             <Link to={`/${params.chapterId}/add-article`}>
                 <button>Создать справку</button>
             </Link>
-            {articles.isLoading ? "Загрузка..."
-                :
-                articles.isError ? "Ошибка!" : articles?.data?.articles.map((article, index) => (
-                    <Article title={article.title} key={index} id={article.id} />
-                ))}
+            <div className={"articles"}>
+                {articles.isLoading ? "Загрузка..."
+                    :
+                    articles.isError ? "Ошибка!" : articles?.data?.articles.map((article, index) => (
+                        <Article title={article.title} key={index}>
+                            <ArticleValue id={article.id} chapterId={params.chapterId}/>
+                        </Article>
+                    ))
+                }
+            </div>
         </div>
     )
 }
