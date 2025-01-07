@@ -121,5 +121,5 @@ export function useCreateArticle() {
         mutationKey: ["post article"],
         mutationFn: async (data) => postArticle(data),
     })
-    return mutation.mutate
+    return mutation
 }
