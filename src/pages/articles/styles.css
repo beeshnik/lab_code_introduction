@@ -1,0 +1,13 @@
+div.articles {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+div.articles-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

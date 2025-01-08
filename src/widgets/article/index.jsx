@@ -1,15 +1,14 @@
 import { styled } from '@mui/material/styles';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import React from "react";
-import {Grid} from "@mui/material";
 import "./styles.css"
+import PublicStatus from "../../shared/ui/publicStatus";
 
 export default function Article(props) {
 
-    const [expanded, setExpanded] = React.useState(props.isExpanded);
+    const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -27,32 +26,28 @@ export default function Article(props) {
     }));
 
     return (
-        <div className={"article"}>
-            <Grid container
-                  direction="row"
-                  justifyContent="left"
-                  alignItems="center"
-                  onClick={handleExpandClick}
-                  aria-expanded={expanded}
-
-            >
-                <Grid item>
-                    <Typography variant={"h8"} color={"textSecondary"}>
-                        {props.title}
-                    </Typography>
-                </Grid>
-                <Grid item>
+        <div className={"article"}
+             onClick={handleExpandClick}
+             aria-expanded={expanded}>
+            <div className="article-header">
+                <div className="article-header-title">
+                    {props.title}
+                    <PublicStatus isEnabled={props.isEnabled} />
+                </div>
+                <div className="article-header-icon">
                     <ExpandMore
                         expand={expanded}
                         aria-label="show more"
                     >
                         <KeyboardArrowRightIcon />
                     </ExpandMore>
-                </Grid>
-            </Grid>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-                {props.children}
-            </Collapse>
+                </div>
+            </div>
+            <div className="article-body">
+                <Collapse in={expanded} timeout="auto" unmountOnExit>
+                    {props.children}
+                </Collapse>
+            </div>
         </div>
     )
 }

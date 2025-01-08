@@ -1,4 +1,49 @@
 
+const pxOptions = [
+        { label: "0px", value: 0 },
+        { label: "8px", value: 8 },
+        { label: "16px", value: 16 },
+        { label: "24px", value: 24 },
+        { label: "32px", value: 32 },
+        { label: "40px", value: 40 },
+        { label: "48px", value: 48 },
+        { label: "56px", value: 56 },
+        { label: "64px", value: 64 },
+        { label: "72px", value: 72 },
+        { label: "80px", value: 80 },
+    ]
+
+const textFields = {
+    size: {
+        type: "number",
+        label: "Размер шрифта"
+    },
+    textAlign: {
+        type: "radio",
+        label: "Выравнивание",
+        options: [
+            { label: "Left", value: "flex-start" },
+            { label: "Center", value: "center" },
+            { label: "Right", value: "flex-end" },
+        ],
+    },
+    padding: {
+        type: "select",
+        label: "Отступы",
+        options: pxOptions,
+    },
+    intervalBottom: {
+        type: "select",
+        label: "Отступ снизу",
+        options: pxOptions,
+    },
+    intervalTop: {
+        type: "select",
+        label: "Отступ сверху",
+        options: pxOptions,
+    }
+}
+
 // Create Puck component config
 export const config = {
     components: {
@@ -8,38 +53,50 @@ export const config = {
                     type: "text",
                     label: "Текст"
                 },
-                size: {
-                    type: "number",
-                    label: "Размер шрифта"
-                }
+                ...textFields
             },
             defaultProps: {
                 text: "Заголовок",
-                size: 24
+                size: 24,
+                textAlign: "flex-start",
             },
             label: "Заголовок",
-            render: ({ text, size }) => {
-                return <h1 style={{fontSize: size}}>{text}</h1>;
+            render: ({ text, size, textAlign, padding, intervalBottom, intervalTop }) => {
+                return <h1 style={{
+                    fontSize: size,
+                    display: "flex",
+                    justifyContent: textAlign,
+                    paddingLeft: padding,
+                    paddingRight: padding,
+                    paddingTop: intervalTop,
+                    paddingBottom: intervalBottom,
+                }}>{text}</h1>;
             },
         },
         Common: {
             fields: {
                 text: {
-                    type: "text",
+                    type: "textarea",
                     label: "Текст"
                 },
-                size: {
-                    type: "number",
-                    label: "Размер шрифта"
-                }
+                ...textFields
             },
             defaultProps: {
                 text: "основной текст",
-                size: 16
+                size: 16,
+                textAlign: "flex-start",
             },
             label: "Основной текст",
-            render: ({ text, size }) => {
-                return <div style={{fontSize: size}}>{text}</div>;
+            render: ({ text, size, textAlign, padding, intervalBottom, intervalTop }) => {
+                return <div style={{
+                    fontSize: size,
+                    display: "flex",
+                    justifyContent: textAlign,
+                    paddingLeft: padding,
+                    paddingRight: padding,
+                    paddingTop: intervalTop,
+                    paddingBottom: intervalBottom,
+                }}>{text}</div>;
             },
         },
     },

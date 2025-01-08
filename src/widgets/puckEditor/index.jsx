@@ -45,7 +45,7 @@ export default function PuckEditor(props) {
         <Puck config={config}
               data={initialData}
               onPublish={save}
-              // headerTitle={"Редактирование справки"}
+              iframe={{ enabled: false }}
               overrides={{
                   headerActions: ({ children }) => {
 

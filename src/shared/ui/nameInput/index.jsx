@@ -1,6 +1,7 @@
 import {Controller, useFormContext} from "react-hook-form";
-import {TextField} from "@mui/material";
+import {InputLabel, TextField} from "@mui/material";
 import {forwardRef} from "react";
+import FormControl from "@mui/material/FormControl";
 
 const NameInput =
     forwardRef(function NameInput(props, ref) {
@@ -17,17 +18,23 @@ const NameInput =
                 }}
                 render={({ field: { value, onChange},
                          fieldState: { error}}) => (
-                    <TextField fullWidth
-                               label={props.label}
-                               variant="outlined"
-                               name={"title"}
-                               value={value || ""}
-                               onChange={onChange}
-                               ref={ref}
-                               helperText={error ? error.message : ""}
-                               error={!!error}
-                    />
-                )}
+                             <FormControl sx={{ m: 1, minWidth: 100 }} error={!!error} fullWidth>
+                                 <TextField
+                                     label={props.label}
+                                     // id="demo-simple-select-label"
+                                     // labelId="demo-simple-select-label"
+                                     variant="outlined"
+                                     name={"title"}
+                                     value={value || ""}
+                                     onChange={onChange}
+                                     ref={ref}
+                                     helperText={error ? error.message : ""}
+                                     error={!!error}
+                                 />
+                             </FormControl>
+
+                        )
+                }
             />
         )
     })

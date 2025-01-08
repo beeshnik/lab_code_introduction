@@ -1,0 +1,14 @@
+div.public-status-true {
+    background-color: #66bb6a;
+    border-radius: 10px;
+    border-color: #66bb6a;
+    padding: 4px;
+    color: white;
+}
+
+div.public-status-false {
+    border-radius: 10px;
+    border: 1px solid #ffa726;
+    padding: 4px;
+    color: #ffa726;
+}

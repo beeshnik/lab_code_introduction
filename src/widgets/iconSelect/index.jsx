@@ -5,6 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import Icon, {defaultIcon} from "../../shared/ui/icon";
 import {forwardRef} from "react";
 import {Controller, useFormContext} from "react-hook-form";
+import {FormHelperText, InputLabel} from "@mui/material";
 
 const menuProps = {
     MenuListProps: {
@@ -35,15 +36,19 @@ const IconSelect =
                 render={({ field: { value, onChange },
                          fieldState: { error }}) => (
 
-                    <FormControl sx={{ m: 1, minWidth: 120 }}>
+                    <FormControl sx={{ m: 1, minWidth: 140 }} error={!!error}>
+                        <InputLabel id="demo-simple-select-label">Значок</InputLabel>
                         <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
                             variant={"outlined"}
                             MenuProps={menuProps}
                             ref={ref}
                             value={value || ""}
                             onChange={onChange}
-                            error={!!error}
-                            helperText={error ? error.message : ""}
+                            autoWidth
+                            label={"Значок"}
+                            sx={{ height: 56 }}
                         >
                             {iconList.map((icon, index) => (
                                 <MenuItem key={index} value={icon}>
@@ -51,6 +56,7 @@ const IconSelect =
                                 </MenuItem>
                             ))}
                         </Select>
+                        <FormHelperText>{error ? error.message : ""}</FormHelperText>
                     </FormControl>
                 )}
             />

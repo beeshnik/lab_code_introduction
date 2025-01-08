@@ -4,6 +4,9 @@ import {forwardRef, useEffect, useState} from "react";
 import Select from "@mui/material/Select";
 import {useGetChapters} from "../../shared/hooks";
 import MenuItem from "@mui/material/MenuItem";
+import {FormHelperText, InputLabel} from "@mui/material";
+import Icon from "../../shared/ui/icon";
+import FormControl from "@mui/material/FormControl";
 
 const SectionList =
     forwardRef(function SectionList(props, ref) {
@@ -26,19 +29,28 @@ const SectionList =
                 }}
                 render={({ field: { value, onChange },
                          fieldState: { error }}) => (
-                    <Select
-                        label={props.label}
-                        name={props.name}
-                        ref={ref}
-                        value={value || ""}
-                        onChange={onChange}
-                        error={!!error}
-                        helperText={error ? error.message : ""}
-                    >
-                        {sectionList?.map((section, index) => (
-                            <MenuItem value={section.id} key={index}>{section.title}</MenuItem>
-                        ))}
-                    </Select>
+
+
+                    <FormControl sx={{ m: 1, minWidth: 100 }} error={!!error} fullWidth>
+                        <InputLabel id="demo-simple-select-label">Выберите главу</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            variant={"outlined"}
+                            ref={ref}
+                            value={value || ""}
+                            onChange={onChange}
+                            label={props.label}
+                            sx={{ height: 56 }}
+                            name={props.name}
+                        >
+                            {sectionList?.map((section, index) => (
+                                <MenuItem value={section.id} key={index}>{section.title}</MenuItem>
+                            ))}
+                        </Select>
+                        <FormHelperText>{error ? error.message : ""}</FormHelperText>
+                    </FormControl>
+
                 )}
             />
         )
