@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+body {
+  padding: 25px 200px 0 200px;
+  /*background: #bdbdbd;*/
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +40,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+div.hoverable:hover {
+  border-radius: 10px;
+  padding: 4px;
+  /*border: 1px solid #bdbdbd;*/
+  transition-duration: 0.25s;
 }
