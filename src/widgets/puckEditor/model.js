@@ -27,9 +27,14 @@ const textFields = {
             { label: "Right", value: "flex-end" },
         ],
     },
-    padding: {
+    paddingLeft: {
         type: "select",
-        label: "Отступы",
+        label: "Отступ слева",
+        options: pxOptions,
+    },
+    paddingRight: {
+        type: "select",
+        label: "Отступ справа",
         options: pxOptions,
     },
     intervalBottom: {
@@ -61,13 +66,13 @@ export const config = {
                 textAlign: "flex-start",
             },
             label: "Заголовок",
-            render: ({ text, size, textAlign, padding, intervalBottom, intervalTop }) => {
+            render: ({ text, size, textAlign, paddingLeft, paddingRight, intervalBottom, intervalTop }) => {
                 return <h1 style={{
                     fontSize: size,
                     display: "flex",
                     justifyContent: textAlign,
-                    paddingLeft: padding,
-                    paddingRight: padding,
+                    paddingLeft: paddingLeft,
+                    paddingRight: paddingRight,
                     paddingTop: intervalTop,
                     paddingBottom: intervalBottom,
                 }}>{text}</h1>;
@@ -87,13 +92,13 @@ export const config = {
                 textAlign: "flex-start",
             },
             label: "Основной текст",
-            render: ({ text, size, textAlign, padding, intervalBottom, intervalTop }) => {
+            render: ({ text, size, textAlign, paddingLeft, paddingRight, intervalBottom, intervalTop }) => {
                 return <div style={{
                     fontSize: size,
                     display: "flex",
                     justifyContent: textAlign,
-                    paddingLeft: padding,
-                    paddingRight: padding,
+                    paddingLeft: paddingLeft,
+                    paddingRight: paddingRight,
                     paddingTop: intervalTop,
                     paddingBottom: intervalBottom,
                 }}>{text}</div>;

@@ -5,6 +5,8 @@ import Article from "../../widgets/article";
 import ArticleValue from "../../widgets/articleValue";
 import "./styles.css"
 import CustomButton from "../../shared/ui/Button";
+import DateLabel from "../../shared/ui/dateLabel";
+import EmptyDirectory from "../../shared/ui/emptyDirectory";
 
 export default function ArticlesPage(props) {
     const params = useParams();
@@ -24,11 +26,16 @@ export default function ArticlesPage(props) {
             <div className={"articles"}>
                 {articles.isLoading ? "Загрузка..."
                     :
-                    articles.isError ? "Ошибка!" : articles?.data?.articles.map((article, index) => (
-                        <Article title={article.title} key={index} isEnabled={article.isEnabled}>
-                            <ArticleValue id={article.id} chapterId={params.chapterId}/>
-                        </Article>
-                    ))
+                    articles.isError ? "Ошибка!"
+                        :
+                        articles?.data?.articles.length > 0 ? articles?.data?.articles.map((article, index) => (
+                            <Article title={article.title} key={index} isEnabled={article.isEnabled} updateDate={article.updateDate}>
+                                <ArticleValue id={article.id} chapterId={params.chapterId}/>
+                            </Article>
+                            ))
+                            :
+                            <EmptyDirectory />
+
                 }
             </div>
         </div>

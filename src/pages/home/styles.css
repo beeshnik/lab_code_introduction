@@ -3,7 +3,8 @@ div.container {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
+    padding-bottom: 50px;
 }
 
 div.header {
@@ -14,9 +15,6 @@ div.header {
     justify-content: space-between;
 }
 
-div.label {
-
-}
 
 div.navigation {
     display: flex;
@@ -29,5 +27,5 @@ div.sections {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 10px;
+    gap: 20px;
 }

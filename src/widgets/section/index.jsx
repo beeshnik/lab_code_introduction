@@ -1,14 +1,10 @@
 import React from 'react';
 import Icon from "../../shared/ui/icon";
 import "./styles.css"
-import {formatDistanceToNow} from "date-fns";
-import {ru} from "date-fns/locale";
 import PublicStatus from "../../shared/ui/publicStatus";
+import DateLabel from "../../shared/ui/dateLabel";
 
 export default function Section(props) {
-
-    const lastDate = new Date(props.updateDate)
-    const date = formatDistanceToNow(lastDate, {locale: ru})
 
     return (
         <div className="section">
@@ -21,11 +17,11 @@ export default function Section(props) {
                         {props.title}
                     </div>
                     <div className="section-status">
-                        <PublicStatus isEnabled={props.isEnabled} />
+                        <PublicStatus isEnabled={props.isEnabled}/>
                     </div>
                 </div>
                 <div className="section-history">
-                    {date}
+                    <DateLabel updateDate={props.updateDate} colorType={"weak"}/>
                 </div>
             </div>
             <div className="chapters">

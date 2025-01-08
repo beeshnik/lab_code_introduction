@@ -32,7 +32,7 @@ const SectionList =
 
 
                     <FormControl sx={{ m: 1, minWidth: 100 }} error={!!error} fullWidth>
-                        <InputLabel id="demo-simple-select-label">Выберите главу</InputLabel>
+                        <InputLabel id="demo-simple-select-label">Выберите раздел</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"

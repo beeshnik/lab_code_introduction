@@ -41,3 +41,10 @@ body {
     transform: rotate(360deg);
   }
 }
+
+div.hoverable:hover {
+  border-radius: 10px;
+  padding: 4px;
+  /*border: 1px solid #bdbdbd;*/
+  transition-duration: 0.25s;
+}

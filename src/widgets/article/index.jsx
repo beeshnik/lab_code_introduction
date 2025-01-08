@@ -5,6 +5,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import React from "react";
 import "./styles.css"
 import PublicStatus from "../../shared/ui/publicStatus";
+import DateLabel from "../../shared/ui/dateLabel";
 
 export default function Article(props) {
 
@@ -33,6 +34,7 @@ export default function Article(props) {
                 <div className="article-header-title">
                     {props.title}
                     <PublicStatus isEnabled={props.isEnabled} />
+                    <DateLabel updateDate={props.updateDate} colorType={"weak"}/>
                 </div>
                 <div className="article-header-icon">
                     <ExpandMore

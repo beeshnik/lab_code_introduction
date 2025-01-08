@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import "./styles.css"
 import NameInput from "../../shared/ui/nameInput";
 import IconSelect from "../../widgets/iconSelect";
@@ -17,6 +17,7 @@ export default function AddSectionPage(props) {
     })
 
     const addSection = useCreateSection()
+    const navigate = useNavigate();
 
     useEffect(() => {
         const error = addSection.isError
@@ -35,6 +36,12 @@ export default function AddSectionPage(props) {
             }
         })
     }
+
+    useEffect(() => {
+        if (addSection.isSuccess) {
+            navigate("/")
+        }
+    }, [addSection.isSuccess]);
 
     return (
         <div>
