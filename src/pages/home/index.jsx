@@ -4,6 +4,7 @@ import Section from "../../widgets/section";
 import Chapter from "../../widgets/chapter";
 import {Link} from "react-router-dom";
 import "./styles.css"
+import CustomButton from "../../shared/ui/Button";
 
 export default function HomePage(){
 
@@ -17,12 +18,11 @@ export default function HomePage(){
                 </div>
                 <div className="navigation">
                     <Link to={`/add-section`}>
-                        <button>Создать раздел</button>
+                        <CustomButton>Создать раздел</CustomButton>
                     </Link>
                     <Link to={`/add-chapter`}>
-                        <button>Создать главу</button>
+                        <CustomButton>Создать главу</CustomButton>
                     </Link>
-                    <button>Редактировать</button>
                 </div>
             </div>
             <div className="sections">

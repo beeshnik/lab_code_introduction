@@ -41,11 +41,24 @@ export default function PuckEditor(props) {
         }
     }, [articleMutation.isPending])
 
+    useEffect(() => {
+        if (articleMutation.isSuccess) {
+            navigate(`/${params.chapterId}/articles`);
+        }
+    }, [articleMutation.isSuccess]);
+
+    useEffect(() => {
+        const error = articleMutation.isError
+        if (error) {
+            alert("Не удалось создать справку")
+        }
+    }, [articleMutation.isError]);
+
     return (
         <Puck config={config}
               data={initialData}
               onPublish={save}
-              // headerTitle={"Редактирование справки"}
+              iframe={{ enabled: false }}
               overrides={{
                   headerActions: ({ children }) => {
 

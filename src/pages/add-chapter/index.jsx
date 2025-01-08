@@ -6,6 +6,8 @@ import DraftStatus from "../../widgets/draftStatus";
 import {FormProvider, useForm} from "react-hook-form";
 import SectionList from "../../widgets/sectionList";
 import {useCreateChapter} from "../../shared/hooks";
+import "./styles.css"
+import CustomButton from "../../shared/ui/Button";
 
 export default function AddChapterPage(props) {
 
@@ -48,23 +50,32 @@ export default function AddChapterPage(props) {
     return (
         <div>
             <Link to={'/'}>
-                Онлайн справки
+                <CustomButton variant={"secondary"}>Назад</CustomButton>
             </Link>
             <h1>Новая глава</h1>
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
-                    <div>
-                        <SectionList name={"sectionId"}
-                                     label={"Название раздела"}
-                        />
-                        <NameInput name={"title"}
-                                   label={"Название главы"}
-                        />
-                        <IconSelect name={"icon"}/>
-                        <DraftStatus name={"isEnabled"}
-                                     label={"Показывать пользователям"}
-                        />
-                        <button type="submit">Создать</button>
+                    <div className={"add-section"}>
+                        <div className="create-names">
+                            <SectionList name={"sectionId"}
+                                         label={"Название раздела"}
+                            />
+                        </div>
+                        <div className="create-names">
+                            <NameInput name={"title"}
+                                       label={"Название главы"}
+                            />
+                            <IconSelect name={"icon"}/>
+                        </div>
+                        <div className="section-visibility">
+                            <DraftStatus name={"isEnabled"}
+                                         label={"Показывать пользователям"}
+                            />
+                        </div>
+                        <div className="section-button">
+                            <CustomButton type="submit">Создать</CustomButton>
+                        </div>
+
                     </div>
                 </form>
             </FormProvider>
