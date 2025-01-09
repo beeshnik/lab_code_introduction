@@ -26,7 +26,13 @@ export default function Chapter(props) {
 
     const changeClicked = (e) => {
         e.preventDefault()
-        navigate(`/${props.chapterId}/change-chapter?title=${props.title}&isEnabled=${props.isEnabled}&icon=${props.icon}&sectionId=${props.sectionId}`)
+        navigate(
+            `/${props.chapterId}/change-chapter?
+            title=${props.title}
+            &isEnabled=${props.isEnabled}
+            &icon=${props.icon}
+            &sectionId=${props.sectionId}`
+        )
     }
 
     useEffect(() => {

@@ -1,5 +1,5 @@
 import {Controller, useFormContext} from "react-hook-form";
-import {InputLabel, TextField} from "@mui/material";
+import {TextField} from "@mui/material";
 import {forwardRef} from "react";
 import FormControl from "@mui/material/FormControl";
 
@@ -21,8 +21,6 @@ const NameInput =
                              <FormControl sx={{ m: 1, minWidth: 100 }} error={!!error} fullWidth>
                                  <TextField
                                      label={props.label}
-                                     // id="demo-simple-select-label"
-                                     // labelId="demo-simple-select-label"
                                      variant="outlined"
                                      name={"title"}
                                      value={value || ""}
@@ -32,7 +30,6 @@ const NameInput =
                                      error={!!error}
                                  />
                              </FormControl>
-
                         )
                 }
             />

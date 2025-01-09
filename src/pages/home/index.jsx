@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import "./styles.css"
 import CustomButton from "../../shared/ui/button";
 import {checkNameLength} from "./model";
+import Loading from "../../widgets/loading";
 
 export default function HomePage(){
 
@@ -28,7 +29,7 @@ export default function HomePage(){
             </div>
             <div className="sections">
                 {query.isLoading ?
-                    "Загрузка" :
+                    <Loading/> :
                     query.isError ? "Ошибка!" : query?.data?.sections.map((section, index) => (
                         <Section
                             sectionId={section.id}
