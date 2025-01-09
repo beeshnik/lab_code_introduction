@@ -3,19 +3,9 @@ div.chapter {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    gap: 5px;
+    gap: 7px;
 }
 
-div.chapter-name {
-    display: flex;
-    flex-direction: row;
-    width: 50%;
-    padding-left: 30px;
-    gap: 5px;
+div.chapter-note {
+    padding-left: 50px;
 }
-
-div.chapter-history {
-
-}
-
-

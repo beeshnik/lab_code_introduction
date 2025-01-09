@@ -1,12 +1,11 @@
 import React from 'react';
-import {Link, useParams} from "react-router-dom";
+import PuckEditor from "../../widgets/puckEditor";
+import "@measured/puck/puck.css";
 
 export default function AddArticlePage(props) {
-    const params = useParams();
-
     return (
-        <Link to={`/${params.chapterId}/articles`}>
-            <button>Назад</button>
-        </Link>
+        <div className="article-container">
+            <PuckEditor/>
+        </div>
     )
 }

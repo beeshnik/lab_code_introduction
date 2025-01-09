@@ -4,6 +4,9 @@ import Section from "../../widgets/section";
 import Chapter from "../../widgets/chapter";
 import {Link} from "react-router-dom";
 import "./styles.css"
+import CustomButton from "../../shared/ui/button";
+import {checkNameLength} from "./model";
+import Loading from "../../widgets/loading";
 
 export default function HomePage(){
 
@@ -17,31 +20,35 @@ export default function HomePage(){
                 </div>
                 <div className="navigation">
                     <Link to={`/add-section`}>
-                        <button>Создать раздел</button>
+                        <CustomButton>Создать раздел</CustomButton>
                     </Link>
                     <Link to={`/add-chapter`}>
-                        <button>Создать главу</button>
+                        <CustomButton>Создать главу</CustomButton>
                     </Link>
-                    <button>Редактировать</button>
                 </div>
             </div>
             <div className="sections">
                 {query.isLoading ?
-                    "Загрузка" :
+                    <Loading/> :
                     query.isError ? "Ошибка!" : query?.data?.sections.map((section, index) => (
-                        <Section title={section.title}
-                                 key={index}
-                                 icon={section.icon}
-                                 createDate={section.createDate}
-                                 updateDate={section.updateDate}
-                                 isEnabled={section.isEnabled}
-                                 displayOrder={section.displayOrder}
+                        <Section
+                            sectionId={section.id}
+                            title={section.title}
+                            viewTitle={checkNameLength(section.title)}
+                            key={index}
+                            icon={section.icon}
+                            createDate={section.createDate}
+                            updateDate={section.updateDate}
+                            isEnabled={section.isEnabled}
+                            displayOrder={section.displayOrder}
                         >
                             {section.chapters.map((chapter, index) => (
                                 <Chapter
                                     key={index}
                                     title={chapter.title}
+                                    viewTitle={checkNameLength(chapter.title)}
                                     chapterId={chapter.id}
+                                    sectionTitle={section.title}
                                     icon={chapter.icon}
                                     isEnabled={chapter.isEnabled}
                                     createDate={chapter.createDate}
