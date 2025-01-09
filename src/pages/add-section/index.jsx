@@ -6,7 +6,7 @@ import IconSelect from "../../widgets/iconSelect";
 import {FormProvider, useForm} from "react-hook-form";
 import DraftStatus from "../../widgets/draftStatus";
 import {useCreateSection} from "../../shared/hooks";
-import CustomButton from "../../shared/ui/Button";
+import CustomButton from "../../shared/ui/button";
 
 export default function AddSectionPage(props) {
 

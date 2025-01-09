@@ -5,7 +5,6 @@ import Select from "@mui/material/Select";
 import {useGetChapters} from "../../shared/hooks";
 import MenuItem from "@mui/material/MenuItem";
 import {FormHelperText, InputLabel} from "@mui/material";
-import Icon from "../../shared/ui/icon";
 import FormControl from "@mui/material/FormControl";
 
 const SectionList =

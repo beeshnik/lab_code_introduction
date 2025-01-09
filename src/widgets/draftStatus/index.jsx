@@ -10,15 +10,16 @@ const DraftStatus =
             <Controller
                 name={props.name}
                 control={control}
-                // rules={{
-                //     required: true
-                // }}
                 render={({ field: { value, onChange } }) => (
-                    <FormControlLabel control={<Checkbox />}
-                                      label={props.label}
-                                      ref={ref}
-                                      value={value || false}
-                                      onChange={onChange}
+                    <FormControlLabel
+                        label={props.label}
+                        control={
+                            <Checkbox
+                                checked={value}
+                                onChange={onChange}
+                                ref={ref}
+                            />
+                        }
                     />
                 )}
             />

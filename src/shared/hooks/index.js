@@ -22,7 +22,7 @@ export function useGetChapters() {
     })
 
     useEffect(() => {
-        console.log("Данные обновлены")
+
     }, [query.isSuccess, query.data]);
 
     useEffect(() => {
@@ -40,7 +40,7 @@ export function useGetArticles(chapterId) {
     })
 
     useEffect(() => {
-        console.log("Данные обновлены")
+
     }, [query.isSuccess, query.data]);
 
     useEffect(() => {
@@ -58,7 +58,7 @@ export function useGetArticle(articleId) {
     })
 
     useEffect(() => {
-        console.log("Данные обновлены")
+
     }, [query.isSuccess, query.data]);
 
     useEffect(() => {
@@ -81,7 +81,7 @@ export function useUpdateSection() {
         mutationKey: ["put section"],
         mutationFn: async (data) => putSection(data),
     })
-    return mutation.mutate
+    return mutation
 }
 
 export function useDeleteSection() {
@@ -89,7 +89,7 @@ export function useDeleteSection() {
         mutationKey: ["delete section"],
         mutationFn: async (data) => deleteSection(data),
     })
-    return mutation.mutate
+    return mutation
 }
 
 export function useCreateChapter() {
@@ -105,7 +105,7 @@ export function useUpdateChapter() {
         mutationKey: ["put chapter"],
         mutationFn: async (data) => putChapter(data),
     })
-    return mutation.mutate
+    return mutation
 }
 
 export function useDeleteChapter() {
@@ -113,7 +113,7 @@ export function useDeleteChapter() {
         mutationKey: ["delete chapter"],
         mutationFn: async (data) => deleteChapter(data),
     })
-    return mutation.mutate
+    return mutation
 }
 
 export function useCreateArticle() {

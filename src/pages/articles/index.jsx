@@ -4,7 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import Article from "../../widgets/article";
 import ArticleValue from "../../widgets/articleValue";
 import "./styles.css"
-import CustomButton from "../../shared/ui/Button";
+import CustomButton from "../../shared/ui/button";
 import DateLabel from "../../shared/ui/dateLabel";
 import EmptyDirectory from "../../shared/ui/emptyDirectory";
 
