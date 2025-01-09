@@ -1,0 +1,23 @@
+
+div.delete-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px
+    /*box-shadow: 24px;*/
+}
+
+div.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+div.modal-control {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

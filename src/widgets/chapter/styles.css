@@ -6,10 +6,6 @@ div.chapter {
     gap: 7px;
 }
 
-div.chapter-name {
-    display: flex;
-    flex-direction: row;
-    width: 50%;
+div.chapter-note {
     padding-left: 50px;
-    gap: 7px;
 }

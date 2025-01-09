@@ -1,69 +1,65 @@
 import React, {useEffect} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useParams, useSearchParams} from "react-router-dom";
 import NameInput from "../../shared/ui/nameInput";
 import IconSelect from "../../widgets/iconSelect";
 import DraftStatus from "../../widgets/draftStatus";
 import {FormProvider, useForm} from "react-hook-form";
-import SectionList from "../../widgets/sectionList";
-import {useCreateChapter} from "../../shared/hooks";
+import { useUpdateSection } from "../../shared/hooks";
 import "./styles.css"
 import CustomButton from "../../shared/ui/button";
 
-export default function AddChapterPage(props) {
+export default function ChangeSectionPage(props) {
+
+    const updateSection = useUpdateSection();
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const params = useParams();
 
     const methods = useForm({
         defaultValues: {
-            "isEnabled": false,
+            isEnabled: Boolean(searchParams.get("isEnabled")),
+            title: searchParams.get("title"),
+            icon: searchParams.get("icon"),
         }
     })
 
-    const addChapter = useCreateChapter();
-    const navigate = useNavigate();
-
     useEffect(() => {
-        const error = addChapter.isError
+        const error = updateSection.isError
         if (error) {
             methods.setError("title")
             methods.setError("icon")
-            methods.setError("sectionId")
-            alert("Не удалось создать раздел")
+            alert("Не удалось редактировать раздел")
         }
-    }, [addChapter.isError]);
-
-    useEffect(() => {
-        if (addChapter.isSuccess) {
-            navigate("/")
-        }
-    }, [addChapter.isSuccess]);
+    }, [updateSection.isError]);
 
     const onSubmit = (form) => {
-        addChapter.mutate({
-            sectionId: form.sectionId,
-            chapter: {
+        updateSection.mutate({
+            sectionId: params.sectionId,
+            section: {
                 ...form,
                 displayOrder: "2",
             }
-        });
-
+        })
     }
+
+    useEffect(() => {
+        if (updateSection.isSuccess) {
+            navigate("/")
+        }
+    }, [updateSection.isSuccess]);
 
     return (
         <div>
             <Link to={'/'}>
                 <CustomButton variant={"secondary"}>Назад</CustomButton>
             </Link>
-            <h1>Новая глава</h1>
+            <h1>Редактирование раздела</h1>
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
-                    <div className={"add-section"}>
-                        <div className="create-names">
-                            <SectionList name={"sectionId"}
-                                         label={"Название раздела"}
-                            />
-                        </div>
+                    <div className="add-section">
                         <div className="create-names">
                             <NameInput name={"title"}
-                                       label={"Название главы"}
+                                       label={"Название раздела"}
                             />
                             <IconSelect name={"icon"}/>
                         </div>
@@ -73,9 +69,8 @@ export default function AddChapterPage(props) {
                             />
                         </div>
                         <div className="section-button">
-                            <CustomButton type="submit">Создать</CustomButton>
+                            <CustomButton type="submit">Изменить</CustomButton>
                         </div>
-
                     </div>
                 </form>
             </FormProvider>

@@ -1,5 +1,5 @@
 import {Puck, usePuck} from "@measured/puck";
-import CustomButton from "../../shared/ui/Button";
+import CustomButton from "../../shared/ui/button";
 import {config} from "./model";
 import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
