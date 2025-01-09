@@ -1,35 +1,40 @@
 import React, {useEffect} from 'react';
-import {Link, useNavigate} from "react-router-dom";
-import "./styles.css"
+import {Link, useNavigate, useParams, useSearchParams} from "react-router-dom";
 import NameInput from "../../shared/ui/nameInput";
 import IconSelect from "../../widgets/iconSelect";
-import {FormProvider, useForm} from "react-hook-form";
 import DraftStatus from "../../widgets/draftStatus";
-import {useCreateSection} from "../../shared/hooks";
+import {FormProvider, useForm} from "react-hook-form";
+import { useUpdateSection } from "../../shared/hooks";
+import "./styles.css"
 import CustomButton from "../../shared/ui/button";
 
-export default function AddSectionPage(props) {
+export default function ChangeSectionPage(props) {
+
+    const updateSection = useUpdateSection();
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const params = useParams();
 
     const methods = useForm({
         defaultValues: {
-            "isEnabled": false,
+            isEnabled: Boolean(searchParams.get("isEnabled")),
+            title: searchParams.get("title"),
+            icon: searchParams.get("icon"),
         }
     })
 
-    const addSection = useCreateSection()
-    const navigate = useNavigate();
-
     useEffect(() => {
-        const error = addSection.isError
+        const error = updateSection.isError
         if (error) {
             methods.setError("title")
             methods.setError("icon")
-            alert("Не удалось создать раздел")
+            alert("Не удалось редактировать раздел")
         }
-    }, [addSection.isError]);
+    }, [updateSection.isError]);
 
     const onSubmit = (form) => {
-        addSection.mutate({
+        updateSection.mutate({
+            sectionId: params.sectionId,
             section: {
                 ...form,
                 displayOrder: "2",
@@ -38,33 +43,35 @@ export default function AddSectionPage(props) {
     }
 
     useEffect(() => {
-        if (addSection.isSuccess) {
+        if (updateSection.isSuccess) {
             navigate("/")
         }
-    }, [addSection.isSuccess]);
+    }, [updateSection.isSuccess]);
 
     return (
         <div>
             <Link to={'/'}>
                 <CustomButton variant={"secondary"}>Назад</CustomButton>
             </Link>
-            <h1>Новый раздел</h1>
+            <h1>Редактирование раздела</h1>
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
                     <div className="add-section">
                         <div className="create-names">
-                            <NameInput name={"title"}
-                                       label={"Название раздела"}
+                            <NameInput
+                                name={"title"}
+                                label={"Название раздела"}
                             />
                             <IconSelect name={"icon"}/>
                         </div>
                         <div className="section-visibility">
-                            <DraftStatus name={"isEnabled"}
-                                         label={"Показывать пользователям"}
+                            <DraftStatus
+                                name={"isEnabled"}
+                                label={"Показывать пользователям"}
                             />
                         </div>
                         <div className="section-button">
-                            <CustomButton type="submit">Создать</CustomButton>
+                            <CustomButton type="submit">Изменить</CustomButton>
                         </div>
                     </div>
                 </form>

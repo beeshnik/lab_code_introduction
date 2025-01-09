@@ -13,9 +13,26 @@ div.chapters {
     gap: 20px;
 }
 
-div.section-name {
+div.note-name {
     display: flex;
     flex-direction: row;
     width: 50%;
+    align-items: center;
     gap: 5px;
+}
+
+div.icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+div.control {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+div.title {
+    max-width: 100%;
 }

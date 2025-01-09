@@ -4,9 +4,10 @@ import {Link, useParams} from "react-router-dom";
 import Article from "../../widgets/article";
 import ArticleValue from "../../widgets/articleValue";
 import "./styles.css"
-import CustomButton from "../../shared/ui/Button";
+import CustomButton from "../../shared/ui/button";
 import DateLabel from "../../shared/ui/dateLabel";
 import EmptyDirectory from "../../shared/ui/emptyDirectory";
+import Loading from "../../widgets/loading";
 
 export default function ArticlesPage(props) {
     const params = useParams();
@@ -24,13 +25,20 @@ export default function ArticlesPage(props) {
                 </Link>
             </div>
             <div className={"articles"}>
-                {articles.isLoading ? "Загрузка..."
+                {articles.isLoading ? <Loading/>
                     :
                     articles.isError ? "Ошибка!"
                         :
                         articles?.data?.articles.length > 0 ? articles?.data?.articles.map((article, index) => (
-                            <Article title={article.title} key={index} isEnabled={article.isEnabled} updateDate={article.updateDate}>
-                                <ArticleValue id={article.id} chapterId={params.chapterId}/>
+                            <Article
+                                title={article.title}
+                                key={index}
+                                isEnabled={article.isEnabled}
+                                updateDate={article.updateDate}>
+                                <ArticleValue
+                                    id={article.id}
+                                    chapterId={params.chapterId}
+                                />
                             </Article>
                             ))
                             :
