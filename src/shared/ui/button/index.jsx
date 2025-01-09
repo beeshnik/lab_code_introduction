@@ -24,6 +24,7 @@ export default function CustomButton(props) {
         variant={props.variant ? variant[props.variant] : "contained"}
         sx={props.variant ? styles[props.variant] : styles["primary"]}
         type={props.type}
-    >{props.children}
+    >
+        {props.children}
     </Button>
 }

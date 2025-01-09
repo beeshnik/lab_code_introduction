@@ -58,14 +58,16 @@ export default function ChangeSectionPage(props) {
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
                     <div className="add-section">
                         <div className="create-names">
-                            <NameInput name={"title"}
-                                       label={"Название раздела"}
+                            <NameInput
+                                name={"title"}
+                                label={"Название раздела"}
                             />
                             <IconSelect name={"icon"}/>
                         </div>
                         <div className="section-visibility">
-                            <DraftStatus name={"isEnabled"}
-                                         label={"Показывать пользователям"}
+                            <DraftStatus
+                                name={"isEnabled"}
+                                label={"Показывать пользователям"}
                             />
                         </div>
                         <div className="section-button">

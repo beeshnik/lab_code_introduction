@@ -61,19 +61,22 @@ export default function ChangeChapterPage(props) {
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
                     <div className={"add-section"}>
                         <div className="create-names">
-                            <SectionList name={"sectionId"}
-                                         label={"Название раздела"}
+                            <SectionList
+                                name={"sectionId"}
+                                label={"Название раздела"}
                             />
                         </div>
                         <div className="create-names">
-                            <NameInput name={"title"}
-                                       label={"Название главы"}
+                            <NameInput
+                                name={"title"}
+                                label={"Название главы"}
                             />
                             <IconSelect name={"icon"}/>
                         </div>
                         <div className="section-visibility">
-                            <DraftStatus name={"isEnabled"}
-                                         label={"Показывать пользователям"}
+                            <DraftStatus
+                                name={"isEnabled"}
+                                label={"Показывать пользователям"}
                             />
                         </div>
                         <div className="section-button">
